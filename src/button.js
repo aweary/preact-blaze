@@ -29,7 +29,9 @@ const Button = (
     children,
     size,
     ghost,
-    block
+    block,
+    // Other props may include event handlers
+    ...props
   }: ButtonProps
 ) => {
   const className = cx({
@@ -45,7 +47,7 @@ const Button = (
     "c-button--block": block
   });
   return (
-    <button className={className}>
+    <button {...props} className={className}>
       {label || children}
     </button>
   );
