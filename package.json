@@ -6,7 +6,7 @@
   "author": "Brandon Dail <brandon.dail@formidable.com>",
   "license": "MIT",
   "scripts": {
-    "build": "rimraf lib && babel --out-dir lib src",
+    "build": "rimraf lib && babel --ignore *.spec.js --out-dir lib src",
     "lint:staged": "lint-staged"
   },
   "lint-staged": {
