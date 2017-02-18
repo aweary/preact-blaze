@@ -1,8 +1,12 @@
 exports[`Button renders a button with the base class name 1`] = `"<button class=\"c-button\"></button>"`;
 
+exports[`Button renders the block variant 1`] = `"<button class=\"c-button c-button--block\"></button>"`;
+
 exports[`Button renders the brand variant 1`] = `"<button class=\"c-button c-button--brand\"></button>"`;
 
 exports[`Button renders the error variant 1`] = `"<button class=\"c-button c-button--error\"></button>"`;
+
+exports[`Button renders the ghost variant 1`] = `"<button class=\"c-button c-button--ghost\"></button>"`;
 
 exports[`Button renders the info variant 1`] = `"<button class=\"c-button c-button--info\"></button>"`;
 

@@ -13,7 +13,15 @@ describe("Button", () => {
     expect(rendered).toMatchSnapshot();
   });
   // Assert each variant renders the correct class
-  ["brand", "info", "warning", "success", "error"].forEach(variant => {
+  [
+    "brand",
+    "info",
+    "warning",
+    "success",
+    "error",
+    "ghost",
+    "block"
+  ].forEach(variant => {
     it(`renders the ${variant} variant`, () => {
       const props = { [variant]: true };
       const rendered = render(<Button {...props} />);
