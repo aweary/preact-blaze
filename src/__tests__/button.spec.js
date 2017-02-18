@@ -12,6 +12,18 @@ describe("Button", () => {
     expect(rendered.includes("c-button")).toBe(true);
     expect(rendered).toMatchSnapshot();
   });
+
+  it("renders the label prop as button text", () => {
+    const rendered = render(<Button label="foo" />);
+    expect(rendered.includes("foo")).toBe(true);
+    expect(rendered).toMatchSnapshot();
+  });
+
+  it("renders the children as the button text if label is missing", () => {
+    const rendered = render(<Button>bar</Button>);
+    expect(rendered.includes("bar")).toBe(true);
+    expect(rendered).toMatchSnapshot();
+  });
   // Assert each variant renders the correct class
   [
     "brand",
