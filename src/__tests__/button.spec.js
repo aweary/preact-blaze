@@ -29,4 +29,12 @@ describe("Button", () => {
       expect(rendered).toMatchSnapshot();
     });
   });
+
+  ["xsmall", "small", "medium", "large", "xlarge", "super"].forEach(size => {
+    it(`renders the ${size} size`, () => {
+      const rendered = render(<Button size={size} />);
+      expect(rendered.includes(`u-${size}`)).toBe(true);
+      expect(rendered).toMatchSnapshot();
+    });
+  });
 });

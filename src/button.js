@@ -13,7 +13,9 @@ type ButtonProps = {
   error: ?boolean,
   size: ?ButtonSize,
   ghost: ?boolean,
-  block: ?boolean
+  block: ?boolean,
+  // @TODO type this correctly as a Preact element
+  children: Object
 };
 
 const Button = (
@@ -24,6 +26,7 @@ const Button = (
     success,
     error,
     label,
+    children,
     size,
     ghost,
     block
@@ -37,13 +40,13 @@ const Button = (
     "c-button--success": success,
     "c-button--error": error,
     // $FlowFixMe undefined can be coerced to a string
-    [`c-button--${size}`]: size,
+    [`u-${size}`]: size,
     "c-button--ghost": ghost,
     "c-button--block": block
   });
   return (
     <button className={className}>
-      {label}
+      {label || children}
     </button>
   );
 };
