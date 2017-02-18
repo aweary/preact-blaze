@@ -1,0 +1,11 @@
+exports[`Button renders a button with the base class name 1`] = `"<button class=\"c-button\"></button>"`;
+
+exports[`Button renders the brand variant 1`] = `"<button class=\"c-button c-button--brand\"></button>"`;
+
+exports[`Button renders the error variant 1`] = `"<button class=\"c-button c-button--error\"></button>"`;
+
+exports[`Button renders the info variant 1`] = `"<button class=\"c-button c-button--info\"></button>"`;
+
+exports[`Button renders the success variant 1`] = `"<button class=\"c-button c-button--success\"></button>"`;
+
+exports[`Button renders the warning variant 1`] = `"<button class=\"c-button c-button--warning\"></button>"`;

@@ -1,1 +1,1 @@
-class Foo {}
+export { default as Button } from "./button";

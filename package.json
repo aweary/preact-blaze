@@ -34,7 +34,12 @@
     "jest": "^18.1.0",
     "lint-staged": "^3.3.0",
     "pre-commit": "^1.2.2",
+    "preact-render-to-string": "^3.6.0",
     "prettier": "^0.18.0",
     "rimraf": "^2.5.4"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": ["src/**/*.js"]
   }
 }

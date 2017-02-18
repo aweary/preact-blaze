@@ -48,4 +48,4 @@ const Button = (
   );
 };
 
-export default () => <div />;
+export default Button;
