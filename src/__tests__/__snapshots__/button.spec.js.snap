@@ -1,31 +1,37 @@
 exports[`Button renders a button with the base class name 1`] = `"<button class=\"c-button\"></button>"`;
 
-exports[`Button renders the block variant 1`] = `"<button class="c-button c-button--block"></button>"`;
+exports[`Button renders the brand ghost variant 1`] = `"<button class=\"c-button c-button--ghost-brand\"></button>"`;
 
-exports[`Button renders the brand variant 1`] = `"<button class="c-button c-button--brand"></button>"`;
+exports[`Button renders the brand variant 1`] = `"<button class=\"c-button c-button--brand\"></button>"`;
 
 exports[`Button renders the children as the button text if label is missing 1`] = `"<button class=\"c-button\">bar</button>"`;
 
-exports[`Button renders the error variant 1`] = `"<button class="c-button c-button--error"></button>"`;
+exports[`Button renders the error ghost variant 1`] = `"<button class=\"c-button c-button--ghost-error\"></button>"`;
 
-exports[`Button renders the ghost variant 1`] = `"<button class="c-button c-button--ghost"></button>"`;
+exports[`Button renders the error variant 1`] = `"<button class=\"c-button c-button--error\"></button>"`;
 
-exports[`Button renders the info variant 1`] = `"<button class="c-button c-button--info"></button>"`;
+exports[`Button renders the info ghost variant 1`] = `"<button class=\"c-button c-button--ghost-info\"></button>"`;
+
+exports[`Button renders the info variant 1`] = `"<button class=\"c-button c-button--info\"></button>"`;
 
 exports[`Button renders the label prop as button text 1`] = `"<button class=\"c-button\">foo</button>"`;
 
-exports[`Button renders the large size 1`] = `"<button class="c-button u-large"></button>"`;
+exports[`Button renders the large size 1`] = `"<button class=\"c-button u-large\"></button>"`;
 
-exports[`Button renders the medium size 1`] = `"<button class="c-button u-medium"></button>"`;
+exports[`Button renders the medium size 1`] = `"<button class=\"c-button u-medium\"></button>"`;
 
-exports[`Button renders the small size 1`] = `"<button class="c-button u-small"></button>"`;
+exports[`Button renders the small size 1`] = `"<button class=\"c-button u-small\"></button>"`;
 
-exports[`Button renders the success variant 1`] = `"<button class="c-button c-button--success"></button>"`;
+exports[`Button renders the success ghost variant 1`] = `"<button class=\"c-button c-button--ghost-success\"></button>"`;
 
-exports[`Button renders the super size 1`] = `"<button class="c-button u-super"></button>"`;
+exports[`Button renders the success variant 1`] = `"<button class=\"c-button c-button--success\"></button>"`;
 
-exports[`Button renders the warning variant 1`] = `"<button class="c-button c-button--warning"></button>"`;
+exports[`Button renders the super size 1`] = `"<button class=\"c-button u-super\"></button>"`;
 
-exports[`Button renders the xlarge size 1`] = `"<button class="c-button u-xlarge"></button>"`;
+exports[`Button renders the warning ghost variant 1`] = `"<button class=\"c-button c-button--ghost-warning\"></button>"`;
 
-exports[`Button renders the xsmall size 1`] = `"<button class="c-button u-xsmall"></button>"`;
+exports[`Button renders the warning variant 1`] = `"<button class=\"c-button c-button--warning\"></button>"`;
+
+exports[`Button renders the xlarge size 1`] = `"<button class=\"c-button u-xlarge\"></button>"`;
+
+exports[`Button renders the xsmall size 1`] = `"<button class=\"c-button u-xsmall\"></button>"`;

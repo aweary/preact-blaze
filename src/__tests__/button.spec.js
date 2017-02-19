@@ -25,19 +25,17 @@ describe("Button", () => {
     expect(rendered).toMatchSnapshot();
   });
   // Assert each variant renders the correct class
-  [
-    "brand",
-    "info",
-    "warning",
-    "success",
-    "error",
-    "ghost",
-    "block"
-  ].forEach(variant => {
+  ["brand", "info", "warning", "success", "error"].forEach(variant => {
     it(`renders the ${variant} variant`, () => {
-      const props = { [variant]: true };
+      const props = { type: variant };
       const rendered = render(<Button {...props} />);
       expect(rendered.includes(`c-button--${variant}`)).toBe(true);
+      expect(rendered).toMatchSnapshot();
+    });
+
+    it(`renders the ${variant} ghost variant`, () => {
+      const rendered = render(<Button type={variant} ghost={true} />);
+      expect(rendered.includes(`c-button--ghost-${variant}`));
       expect(rendered).toMatchSnapshot();
     });
   });
