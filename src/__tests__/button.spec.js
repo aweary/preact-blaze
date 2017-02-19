@@ -19,6 +19,12 @@ describe("Button", () => {
     expect(rendered).toMatchSnapshot();
   });
 
+  it("renders the rounded variant", () => {
+    const rendered = render(<Button rounded={true} />);
+    expect(rendered.includes("c-button--rounded")).toBe(true);
+    expect(rendered).toMatchSnapshot();
+  });
+
   it("renders the children as the button text if label is missing", () => {
     const rendered = render(<Button>bar</Button>);
     expect(rendered.includes("bar")).toBe(true);

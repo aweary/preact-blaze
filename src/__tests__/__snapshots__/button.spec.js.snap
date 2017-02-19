@@ -20,6 +20,8 @@ exports[`Button renders the large size 1`] = `"<button class=\"c-button u-large\
 
 exports[`Button renders the medium size 1`] = `"<button class=\"c-button u-medium\"></button>"`;
 
+exports[`Button renders the rounded variant 1`] = `"<button class=\"c-button c-button--rounded\"></button>"`;
+
 exports[`Button renders the small size 1`] = `"<button class=\"c-button u-small\"></button>"`;
 
 exports[`Button renders the success ghost variant 1`] = `"<button class=\"c-button c-button--ghost-success\"></button>"`;
