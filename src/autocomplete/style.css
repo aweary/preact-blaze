@@ -1,0 +1,10 @@
+.autocomplete--results {
+  /* Corresponds to the $z-over-everything variable */
+  z-index: 500;
+  position: relative;
+}
+
+.autocomplete__item:focus {
+  background-color: #EEEEEE;
+  outline: none;
+}
