@@ -10,8 +10,8 @@ import "./style.css";
 type AutoCompleteProps = {
   source: Array<string>,
   limit: number,
-  onSelect: (string) => void,
-  filter: (string, string) => boolean
+  onSelect: string => void,
+  filter: (string, Array<string>) => Array<string>
 };
 
 type AutoCompleteState = {
@@ -21,31 +21,30 @@ type AutoCompleteState = {
   filtered: Array<string>
 };
 
-type $InputKeyboardEvent =
-  & KeyboardEvent
-  & {
-    target: HTMLInputElement
-  };
+type $InputKeyboardEvent = KeyboardEvent & {
+  target: HTMLInputElement
+};
 
-type $KeyboardEvent =
-  & KeyboardEvent
-  & {
-    target: HTMLElement
-  };
+type $KeyboardEvent = KeyboardEvent & {
+  target: HTMLElement
+};
 
 type $MouseEvent = {
   target: HTMLElement
 };
 
+const TAB_KEY = 9;
 const ENTER_KEY = 13;
+const ESCAPE_KEY = 27;
 const UP_ARROW_KEY = 38;
 const DOWN_ARROW_KEY = 40;
-const ESCAPE_KEY = 27;
 
-const defaultFilter = (value: string, item: string) => {
+const defaultFilter = (value: string, items: Array<string>) => {
   value = value.toLowerCase();
-  item = item.toLowerCase();
-  return fuzzysearch(value, item);
+  return items.filter(item => {
+    item = item.toLowerCase();
+    return fuzzysearch(value, item);
+  });
 };
 
 export default class AutoComplete extends Component {
@@ -72,7 +71,7 @@ export default class AutoComplete extends Component {
 
   handleInputChange = ({ target: { value } }: $InputKeyboardEvent) => {
     const { source, limit, filter } = this.props;
-    let filtered = source.filter(filter.bind(null, value));
+    let filtered = filter(value, source);
     if (limit != null && filtered.length > limit) {
       filtered = filtered.slice(0, limit);
     }
@@ -107,10 +106,12 @@ export default class AutoComplete extends Component {
      * the suggestions. 
      */
     if (
-      (keyCode === DOWN_ARROW_KEY || keyCode == UP_ARROW_KEY) &&
+      (keyCode === DOWN_ARROW_KEY ||
+        keyCode == UP_ARROW_KEY ||
+        keyCode === TAB_KEY) &&
       shouldSelectItem
     ) {
-      const delta = keyCode === DOWN_ARROW_KEY ? 1 : -1;
+      const delta = keyCode === DOWN_ARROW_KEY || keyCode === TAB_KEY ? 1 : -1;
       const target = selected == null ? 0 : selected + delta;
       if (target >= 0 || target <= limit) {
         event.preventDefault();
@@ -160,7 +161,7 @@ export default class AutoComplete extends Component {
     return (
       <div className="autocomplete--results">
         <input
-          ref={n => this.input = n}
+          ref={n => (this.input = n)}
           value={this.state.value}
           onKeyDown={this.handleKeyDown}
           onInput={this.handleInputChange}
