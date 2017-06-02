@@ -6,7 +6,15 @@ import cx from "classnames";
 
 const Card = ({ children, className, grouped, shadow, ...rest }) => {
   return (
-    <div className="c-card u-highest">
+    <div
+      className={cx({
+        "c-card": true,
+        "c-card--grouped": grouped,
+        [`u-${shadow}`]: !!shadow,
+        [className]: !!className
+      })}
+      {...rest}
+    >
       {children}
     </div>
   );
