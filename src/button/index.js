@@ -6,6 +6,7 @@ type ButtonType = "brand" | "info" | "warning" | "success" | "error";
 
 type ButtonProps = {
   label: string,
+  active: ?boolean,
   type: ?ButtonType,
   size: ?Sizes,
   ghost: ?boolean,
@@ -22,8 +23,10 @@ const getButtonClassName = (
   ghost,
   block,
   rounded,
+  active,
   className
 ): string =>
+  // @TODO use cx, implement active
   `c-button${type ? (type && ghost ? ` c-button--ghost-${type}` : ` c-button--${type}`) : ""}${ghost && !type ? " c-button--ghost" : ""}${block ? " c-button--block" : ""}${size ? ` u-${size}` : ""}${className ? className : ""}${rounded ? " c-button--rounded" : ""}`;
 
 const Button = (props: ButtonProps) => {
