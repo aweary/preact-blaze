@@ -8,3 +8,24 @@
   background-color: #EEEEEE;
   outline: none;
 }
+
+@keyframes scaleIn {
+  0% {
+    transform: scaleY(0);
+    opacity: 0.6;
+  }
+  60% {
+    transform: scaleY(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+.autocomplete__animated {
+  transition: max-width 1s ease-in-out;
+  transition-duration: 250ms;
+  transform-origin: top right;
+  animation: scaleIn 250ms;
+}

@@ -1,6 +1,9 @@
 // @flow
 import { h, Component } from "preact";
 import fuzzysearch from "fuzzysearch";
+import Input from "../inputs/input";
+import Icon from "../icon";
+import Field from "../inputs/field";
 import "blaze/dist/objects.forms.min.css";
 import "blaze/dist/components.tags.min.css";
 import "blaze/dist/components.cards.min.css";
@@ -65,7 +68,11 @@ export default class AutoComplete extends Component {
       value: "",
       selected: null,
       filtering: false,
-      filtered: []
+      filtered: [],
+      // A random ID is created when the component is constructed.
+      // This is used as an id for our input/list elements so that
+      // we can provide accurate ARIA labels
+      id: (Math.random() + "").slice(0, 5)
     };
   }
 
@@ -93,11 +100,15 @@ export default class AutoComplete extends Component {
      * all current suggestions if you have selected one of the
      * suggestions with the arrow keys.
      */
-    if (keyCode === ESCAPE_KEY && selected !== null) {
-      this.setState({
-        selected: null,
-        filtering: false
-      });
+    if (keyCode === ESCAPE_KEY) {
+      console.log({ selected });
+      if (selected !== null) {
+        this.setState({
+          selected: null
+        });
+      } else {
+        this.setState({ filtering: false });
+      }
       this.input.focus();
     }
 
@@ -111,11 +122,15 @@ export default class AutoComplete extends Component {
         keyCode === TAB_KEY) &&
       shouldSelectItem
     ) {
-      const delta = keyCode === DOWN_ARROW_KEY || keyCode === TAB_KEY ? 1 : -1;
+      console.log(event);
+      const delta = keyCode === DOWN_ARROW_KEY ||
+        (keyCode === TAB_KEY && !event.shiftKey)
+        ? 1
+        : -1;
       const target = selected == null ? 0 : selected + delta;
       if (target >= 0 || target <= limit) {
         event.preventDefault();
-        const node = document.querySelector(`[data-index="${target}"`);
+        const node = document.querySelector(`[data-index="${target}"]`);
         // If the node doesn't exist then just give up :party:
         if (node) {
           node.focus();
@@ -156,33 +171,56 @@ export default class AutoComplete extends Component {
   };
 
   render() {
-    const { source, limit, placeholder } = this.props;
-    const { value, selected, filtering, filtered } = this.state;
+    const {
+      source,
+      limit,
+      placeholder,
+      iconLeft,
+      iconRight,
+      inputProps
+    } = this.props;
+    const { value, selected, filtering, filtered, id } = this.state;
+    const isFiltering = value && filtering;
     return (
       <div className="autocomplete--results">
-        <input
-          ref={n => (this.input = n)}
-          value={this.state.value}
-          onKeyDown={this.handleKeyDown}
-          onInput={this.handleInputChange}
-          placeholder={placeholder}
-          className="c-field"
-        />
-        <ul className="c-card c-card--menu u-higher">
-          {filtering &&
-            value &&
-            filtered.map((item, i) => (
+        <Field iconLeft={iconLeft} iconRight={iconRight}>
+          <Input
+            iconRight={iconRight}
+            iconLeft={iconLeft}
+            ref={n => (this.input = n)}
+            value={this.state.value}
+            onKeyDown={this.handleKeyDown}
+            onInput={this.handleInputChange}
+            placeholder={placeholder}
+            aria-autocomplete="list"
+            aria-owns={this.state.id}
+            aria-activedescendant={`${id}-${selected}`}
+            role="combobox"
+            {...inputProps}
+          />
+        </Field>
+        {isFiltering &&
+          <ul
+            id={this.state.id}
+            aria-expanded={true}
+            role="listbox"
+            className="c-card c-card--menu u-higher autocomplete__animated"
+          >
+            {filtered.map((item, i) => (
               <li
+                role="option"
                 onClick={this.handleItemSelect}
                 onKeyDown={this.handleKeyDown}
                 tabIndex={i}
                 data-index={i}
-                className="c-card__item autocomplete__item"
+                id={`${id}-${i}`}
+                key={i}
+                className="c-card__item autocomplete__item autocomplete__animated"
               >
                 {item}
               </li>
             ))}
-        </ul>
+          </ul>}
       </div>
     );
   }
