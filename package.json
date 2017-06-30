@@ -6,7 +6,7 @@
   "author": "Brandon Dail <brandon.dail@formidable.com>",
   "license": "MIT",
   "scripts": {
-    "build": "rimraf lib && babel --ignore *.spec.js --out-dir lib src && node scripts/build-size",
+    "build": "rimraf lib && babel --ignore *.spec.js --out-dir lib src",
     "lint:staged": "lint-staged"
   },
   "lint-staged": {
@@ -15,11 +15,14 @@
       "git add"
     ]
   },
-  "pre-commit": "lint:staged",
   "dependencies": {
     "blaze": "^3.2.0",
     "classnames": "^2.2.5",
-    "preact": "^7.2.0"
+    "emptyfunction": "^1.0.0",
+    "fuzzysearch": "^1.0.3",
+    "preact": "^7.2.0",
+    "preact-css-transition-group": "^1.2.0",
+    "preact-transition-group": "^1.1.1"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
@@ -48,6 +51,9 @@
     "collectCoverage": true,
     "collectCoverageFrom": [
       "src/**/*.js"
-    ]
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>/__mocks__/style.js"
+    }
   }
 }

@@ -1184,6 +1184,10 @@ elegant-spinner@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/elegant-spinner/-/elegant-spinner-1.0.1.tgz#db043521c95d7e303fd8f345bedc3349cfb0729e"
 
+emptyfunction@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/emptyfunction/-/emptyfunction-1.0.0.tgz#f5a1e683718148c2b981d53e70043938f3b8df4a"
+
 "errno@>=0.1.1 <0.2.0-0":
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/errno/-/errno-0.1.4.tgz#b896e23a9e5e8ba33871fc996abd3635fc9a1c7d"
@@ -2608,11 +2612,19 @@ pre-commit@^1.2.2:
     spawn-sync "^1.0.15"
     which "1.2.x"
 
+preact-css-transition-group@^1.2.0:
+  version "1.2.0"
+  resolved "http://npme.walmart.com/preact-css-transition-group/-/preact-css-transition-group-1.2.0.tgz#28f6acb0cb95c107f3c9ddbcd6f4c3de26deebdc"
+
 preact-render-to-string@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/preact-render-to-string/-/preact-render-to-string-3.6.0.tgz#03a49d2d755a766c3d421e8b06d6edbb33ed6bde"
   dependencies:
     pretty-format "^3.5.1"
+
+preact-transition-group@^1.1.1:
+  version "1.1.1"
+  resolved "http://npme.walmart.com/preact-transition-group/-/preact-transition-group-1.1.1.tgz#f0a49327ea515ece34ea2be864c4a7d29e5d6e10"
 
 preact@^7.2.0:
   version "7.2.0"
