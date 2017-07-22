@@ -1,0 +1,16 @@
+html, body {
+  font-family: sans-serif;
+}
+
+.demo--container {
+  margin: 5px auto;
+  max-width: 700px;
+}
+
+.demo--item {
+  padding: 5px;
+}
+
+.demo--code {
+  font-size: 16px;
+}
